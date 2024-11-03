@@ -12,6 +12,86 @@
     <!-- remix icon -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 
+    <!-- CSS -->
+    <style>
+        /* Hide the navigation menu by default */
+        .nav {
+          display: none;
+        }
+  
+        /* Style the hamburger menu */
+        .hamburger {
+        display: block;
+        cursor: pointer;
+        color: #333;
+        padding: 10px;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        transition: transform 0.3s ease;
+        }
+  
+        /* Change the style of the hamburger menu when clicked */
+        .hamburger.active {
+          transform: rotate(180deg);
+        }
+  
+        /* Style the navigation menu when it's displayed */
+        .nav.active {
+          display: block;
+        }
+  
+        /* Style the navigation links */
+        .nav a {
+          display: block;
+          padding: 10px;
+          color: #333;
+          text-decoration: none;
+          transition: background-color 0.3s ease;
+        }
+  
+        /* Style the navigation links when they're hovered */
+        .nav a:hover {
+          background-color: #f2f2f2;
+        }
+
+        /* Desktop Navbar */
+        .desktop-nav {
+          position: sticky;
+          top: 0;
+          left: 0;
+          right: 0;
+          background-color: #fff;
+          z-index: 999;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          display: block;
+        }
+
+        /* Mobile Navbar */
+        .mobile-nav {
+          display: none;
+        }
+
+        /* CSS for smaller screens (max-width: 768px) */
+        @media (max-width: 768px) {
+          .desktop-nav {
+            display: none;
+          }
+
+          .mobile-nav {
+            display: block;
+          }
+
+          .mobile-nav.sticky {
+          position: fixed;
+          top: 0;
+          width: 100%;
+          z-index: 999;
+          }
+        }
+
+    </style>
+
     <script>
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
@@ -19,6 +99,77 @@
 
 </head>
 <body>
+
+    <!-- Navigation for Desktop -->
+    <nav class="desktop-nav bg-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex items-center">
+                <!-- Logo and Brand Name -->
+                <a href="index.html" class="flex items-center py-4 px-2">
+                    <span class="font-semibold text-gray-500 text-lg">GajahWong</span>
+                </a>
+                <!-- Sticky Top Bar -->
+                <div class="max-w-6xl mx-auto px-2">
+                    <div class="flex justify-between items-center py-3">
+                        <a href="index.html" class="text-blue-500 font-semibold mr-12">Home</a>
+                        <a href="lokasi.html" class="text-gray-500 font-semibold hover:text-gray-700 transition duration-300 mr-12">Lokasi</a>
+                        <a href="artikel.html" class="text-gray-500 font-semibold hover:text-gray-700 transition duration-300 mr-12">Artikel</a>
+                        <a href="cuaca.html" class="text-gray-500 font-semibold hover:text-gray-700 transition duration-300 mr-12">Cuaca</a>
+                        <a href="bencana.html" class="text-gray-500 font-semibold hover:text-gray-700 transition duration-300 mr-12">Update Bencana</a>
+                        <a href="kontak.html" class="text-gray-500 font-semibold hover:text-gray-700 transition duration-300 mr-12">Kontak Kami</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Navigation for Mobile -->
+    <nav class="mobile-nav bg-white" id="mobileNav">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex items-center">
+                <!-- Logo and Brand Name -->
+                <a href="index.html" class="flex items-center py-4 px-2">
+                    <span class="font-semibold text-gray-500 text-lg">GajahWong</span>
+                </a>
+                <!-- Hamburger Menu -->
+                <div class="hamburger" id="hamburger">
+                    <i class="ph ph-list"></i>
+                </div>
+            </div>
+            <!-- Navigation Menu -->
+            <div class="nav" id="nav">
+                <a href="#" class="text-gray-500 font-semibold hover:text-gray-700 transition duration-300">Home</a>
+                <a href="#" class="text-gray-500 font-semibold hover:text-gray-700 transition duration-300">About</a>
+                <a href="#services" class="text-gray-500 font-semibold hover:text-gray-700 transition duration-300">Services</a>
+                <a href="#skills" class="text-gray-500 font-semibold hover:text-gray-700 transition duration-300">Skills</a>
+                <a href="#contact" class="text-gray-500 font-semibold hover:text-gray-700 transition duration-300">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Java Script -->
+    <script>
+        const mobileNav = document.getElementById('mobileNav');
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('nav');
+  
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+
+        window.addEventListener('scroll', () => {
+        if (window.innerWidth <= 767) {
+            if (window.scrollY > 0) {
+                mobileNav.classList.add('sticky');
+            } else {
+                mobileNav.classList.remove('sticky');
+            }
+        }
+    });
+
+    </script>
+
     <!-- header -->
     <header>
         <a href="#" class="logo">My <span>Portfolio</span></a>
