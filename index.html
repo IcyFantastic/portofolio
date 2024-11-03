@@ -22,20 +22,13 @@
 </head>
 <body>
 
-    <script>
-        const menuIcons = document.getElementById('menu-icons');
-        const navlist = document.getElementById('navlist');
-
-        menuIcons.addEventListener('click', () => {
-            navlist.classList.toggle('active'); // Toggle the active class on navlist
-        });
-    </script>
-
     <!-- header -->
     <header>
         <a href="#" class="logo">My <span>Portfolio</span></a>
 
-        <div class="bx bx-menu" id="menu-icons"></div>
+        <div class="hamburger" id="menu-icons">
+            <i class="ri-menu-3-line"></i> <!-- Ikon hamburger dari Remix Icon -->
+        </div>
 
         <ul class="navlist">
             <li><a href="#">Home</a></li>
@@ -70,5 +63,15 @@
             </div>
         </div>
     </section>
+
+    <script>
+        const menuIcons = document.getElementById('menu-icons');
+        const navlist = document.getElementById('navlist');
+
+        menuIcons.addEventListener('click', () => {
+            navlist.classList.toggle('active'); // Toggle the active class on navlist
+        });
+    </script>
+
 </body>
 </html>
